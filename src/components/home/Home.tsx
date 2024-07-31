@@ -13,7 +13,7 @@ export const Home: React.FC = () => {
   return (
     <>
 
-      <div className="container mx-auto px-4 py-8 min-h-screen">
+      <div className="container mx-auto px-4 py-24 min-h-screen">
         <header className="flex justify-center items-center mb-12">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
             The Joke Tax Chronicles
