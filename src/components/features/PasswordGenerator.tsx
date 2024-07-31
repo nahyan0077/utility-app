@@ -8,34 +8,40 @@ import { MdContentCopy } from "react-icons/md";
 import { generatePassword } from "@/utils/generatePassword";
 
 export const PasswordGenerator: React.FC = () => {
-    
-    const [password, setPassword] = useState("");
-    const [length, setLength] = useState(12);
-    const [options, setOptions] = useState({
-      uppercase: true,
-      lowercase: true,
-      numbers: true,
-      symbols: true,
-    });
-    useEffect(()=>{
-        let genPassword = generatePassword(
-            length,
-            options.uppercase,
-            options.lowercase,
-            options.numbers,
-            options.symbols
-          );
-          setPassword(genPassword);
-    },[length,options])
+  const [password, setPassword] = useState("");
+  const [length, setLength] = useState(12);
+  const [options, setOptions] = useState({
+    uppercase: true,
+    lowercase: true,
+    numbers: true,
+    symbols: true,
+  });
 
+  useEffect(() => {
+    const genPassword = generatePassword(
+      length,
+      options.uppercase,
+      options.lowercase,
+      options.numbers,
+      options.symbols
+    );
+    setPassword(genPassword);
+  }, [length, options]);
 
   const handleOptionChange = (option: keyof typeof options) => {
+    const isOnlyOneEnabled = Object.values(options).filter(Boolean).length === 1;
+
+    if (isOnlyOneEnabled && options[option]) {
+
+      toast("At least one option must be selected");
+      return;
+    }
+
     setOptions((prev) => ({ ...prev, [option]: !prev[option] }));
   };
 
   const handleGeneratePassword = () => {
-
-    let genPassword = generatePassword(
+    const genPassword = generatePassword(
       length,
       options.uppercase,
       options.lowercase,
@@ -53,10 +59,8 @@ export const PasswordGenerator: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-3xl min-h-screen ">
-      <h1 className="text-3xl font-bold text-center mb-8">
-        Password Generator
-      </h1>
+    <div className="container mx-auto px-4 py-8 max-w-3xl min-h-screen">
+      <h1 className="text-3xl font-bold text-center mb-8">Password Generator</h1>
 
       <div className="flex flex-col space-y-6 justify-center items-center">
         <div className="w-full space-y-2">
@@ -70,16 +74,15 @@ export const PasswordGenerator: React.FC = () => {
             />
             <Button
               onClick={copyToClipboard}
-              className="absolute right-0 top-0 h-full px-4">
+              className="absolute right-0 top-0 h-full px-4"
+            >
               <MdContentCopy size={20} />
             </Button>
           </div>
         </div>
 
         <div className="w-full space-y-2">
-          <label className="text-sm font-medium">
-            Password Length: {length}
-          </label>
+          <label className="text-sm font-medium">Password Length: {length}</label>
           <Slider
             value={[length]}
             onValueChange={([value]) => setLength(value)}
@@ -98,16 +101,14 @@ export const PasswordGenerator: React.FC = () => {
               <Switch
                 id={key}
                 checked={value}
-                onCheckedChange={() =>
-                  handleOptionChange(key as keyof typeof options)
-                }
+                onCheckedChange={() => handleOptionChange(key as keyof typeof options)}
               />
             </div>
           ))}
         </div>
         <div className="flex justify-center">
-          <Button onClick={handleGeneratePassword} className="w-full mt-4 ">
-            Generate Password
+          <Button onClick={handleGeneratePassword} className="w-full mt-4">
+            Update Password
           </Button>
         </div>
       </div>
