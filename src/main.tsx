@@ -5,9 +5,10 @@ import "./index.css";
 import { ThemeProvider } from "./components/ui/theme-provider.tsx";
 import { Toaster } from "sonner";
 
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Toaster position="top-center" />
+    <Toaster />
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <App />
     </ThemeProvider>

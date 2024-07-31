@@ -3,12 +3,17 @@ import { Button } from "../ui/button";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { TiWeatherPartlySunny } from "react-icons/ti";
 import { ImEmbed2 } from "react-icons/im";
+import { useNavigate } from "react-router-dom";
+
 
 export const Home: React.FC = () => {
+    const navigate = useNavigate()
+
+
   return (
     <>
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8 min-h-screen">
         <header className="flex justify-center items-center mb-12">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
             The Joke Tax Chronicles
@@ -22,16 +27,19 @@ export const Home: React.FC = () => {
                 icon: <RiLockPasswordFill className="w-16 h-16 mb-4" />,
                 title: "Random Password Generator",
                 description: "Generate strong, secure passwords with ease.",
+                navigateTo:'generate-password'
               },
               {
                 icon: <TiWeatherPartlySunny className="w-16 h-16 mb-4" />,
                 title: "Weather Info",
                 description: "Get real-time weather updates for any location.",
+                navigateTo:'generate-password'
               },
               {
                 icon: <ImEmbed2 className="w-16 h-16 mb-4" />,
                 title: "URL Reducer",
                 description: "Shorten long URLs into manageable links.",
+                navigateTo:'generate-password'
               },
             ].map((card, index) => (
               <div
@@ -42,7 +50,7 @@ export const Home: React.FC = () => {
                 <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 text-center">
                   {card.description}
                 </p>
-                <Button>Explore Now</Button>
+                <Button onClick={()=>navigate(`/${card.navigateTo}`)} >Explore Now</Button>
               </div>
             ))}
           </div>
