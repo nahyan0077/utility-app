@@ -1,6 +1,7 @@
 import './App.css'
-import { PasswordGenerator } from './components/features/PasswordGenerator'
-import { Home } from './components/home/Home'
+
+import { HomePage } from './pages/HomePage'
+
 
 
 function App() {
@@ -9,8 +10,8 @@ function App() {
   return (
     <>
 
-      {/* <Home /> */}
-      <PasswordGenerator />
+      <HomePage />
+      {/* <PasswordGenerator /> */}
     </>
   )
 }

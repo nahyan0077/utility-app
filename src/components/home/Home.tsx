@@ -1,6 +1,5 @@
 import React from "react";
 import { Button } from "../ui/button";
-import { ModeToggle } from "../ui/mode-toggler";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { TiWeatherPartlySunny } from "react-icons/ti";
 import { ImEmbed2 } from "react-icons/im";
@@ -8,11 +7,7 @@ import { ImEmbed2 } from "react-icons/im";
 export const Home: React.FC = () => {
   return (
     <>
-      <div className="relative">
-        <div className="absolute top-4 right-4">
-          <ModeToggle />
-        </div>
-      </div>
+
       <div className="container mx-auto px-4 py-8">
         <header className="flex justify-center items-center mb-12">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
