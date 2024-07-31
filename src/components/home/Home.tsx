@@ -33,13 +33,13 @@ export const Home: React.FC = () => {
                 icon: <TiWeatherPartlySunny className="w-16 h-16 mb-4" />,
                 title: "Weather Info",
                 description: "Get real-time weather updates for any location.",
-                navigateTo:'generate-password'
+                navigateTo:'weather-info'
               },
               {
                 icon: <ImEmbed2 className="w-16 h-16 mb-4" />,
-                title: "URL Reducer",
+                title: "URL Shortener",
                 description: "Shorten long URLs into manageable links.",
-                navigateTo:'generate-password'
+                navigateTo:'url-shortener'
               },
             ].map((card, index) => (
               <div

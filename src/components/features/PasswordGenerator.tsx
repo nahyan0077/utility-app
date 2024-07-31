@@ -21,13 +21,13 @@ export const PasswordGenerator: React.FC = () => {
   const calculateStrength = (password: string, options: any) => {
     let score = 0;
     
-    // Length contribution
+    // Length 
     if (password.length < 10) score -= 4    
     else if (password.length >= 12) score += 3;
     else if (password.length >= 8) score += 2;
     else if (password.length >= 6) score += 1;
 
-    // Character type contribution
+    // Character 
     if (options.lowercase) score += 1;
     if (options.uppercase) score += 1;
     if (options.numbers) score += 1;
