@@ -4,60 +4,67 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import { TiWeatherPartlySunny } from "react-icons/ti";
 import { ImEmbed2 } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
-
+import { FaTools } from "react-icons/fa";
 
 export const Home: React.FC = () => {
     const navigate = useNavigate()
 
+    return (
+        <div className="  min-h-screen">
+            <div className="container mx-auto px-4 py-16">
+                <header className="flex justify-center items-center mb-16">
+                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
+                        <div className="flex items-center">
+                            <span className="mr-2">Quick</span>
+                            <FaTools className="w-12 h-12 mx-2" />
+                            <span className="ml-2">Tools</span>
+                        </div>
+                    </h1>
+                </header>
 
-  return (
-    <>
-
-      <div className="container mx-auto px-4 py-24 min-h-screen">
-        <header className="flex justify-center items-center mb-12">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
-            The Joke Tax Chronicles
-          </h1>
-        </header>
-
-        <main>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <RiLockPasswordFill className="w-16 h-16 mb-4" />,
-                title: "Random Password Generator",
-                description: "Generate strong, secure passwords with ease.",
-                navigateTo:'generate-password'
-              },
-              {
-                icon: <TiWeatherPartlySunny className="w-16 h-16 mb-4" />,
-                title: "Weather Info",
-                description: "Get real-time weather updates for any location.",
-                navigateTo:'weather-info'
-              },
-              {
-                icon: <ImEmbed2 className="w-16 h-16 mb-4" />,
-                title: "URL Shortener",
-                description: "Shorten long URLs into manageable links.",
-                navigateTo:'url-shortener'
-              },
-            ].map((card, index) => (
-              <div
-                key={index}
-                className="border border-gray-200 dark:border-gray-700 rounded-lg shadow-md p-6 flex flex-col items-center">
-                {card.icon}
-                <h2 className="text-xl font-semibold mb-2">{card.title}</h2>
-                <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 text-center">
-                  {card.description}
-                </p>
-                <Button onClick={()=>navigate(`/${card.navigateTo}`)} >Explore Now</Button>
-              </div>
-            ))}
-          </div>
-        </main>
-      </div>
-    </>
-  );
+                <main>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                        {[
+                            {
+                                icon: <RiLockPasswordFill className="w-20 h-20 mb-6" />,
+                                title: "Random Password Generator",
+                                description: "Create strong, unique passwords instantly. Customize length and character types to enhance your online security effortlessly.",
+                                navigateTo: 'generate-password'
+                            },
+                            {
+                                icon: <TiWeatherPartlySunny className="w-20 h-20 mb-6" />,
+                                title: "Weather Info",
+                                description: "Access real-time weather data for any location worldwide. Get temperature, humidity, wind speed, and more with just a city name.",
+                                navigateTo: 'weather-info'
+                            },
+                            {
+                                icon: <ImEmbed2 className="w-20 h-20 mb-6" />,
+                                title: "URL Shortener",
+                                description: "Transform long, complex URLs into concise, shareable links. Perfect for social media, emails, and anywhere character count matters.",
+                                navigateTo: 'url-shortener'
+                            },
+                        ].map((card, index) => (
+                            <div
+                                key={index}
+                                className="border-2 border-gray-200 dark:border-gray-700 rounded-lg p-8 flex flex-col items-center transition-all duration-300 hover:shadow-xl ">
+                                {card.icon}
+                                <h2 className="text-2xl font-bold mb-4 text-center">{card.title}</h2>
+                                <p className="text-gray-700 dark:text-gray-300 text-base mb-6 text-center">
+                                    {card.description}
+                                </p>
+                                <Button 
+                                    onClick={() => navigate(`/${card.navigateTo}`)}
+                                    className="bg-gray-800 hover:bg-gray-700 text-white dark:bg-gray-200 dark:hover:bg-gray-300 dark:text-gray-900 font-semibold py-2 px-6 rounded-xl transition-colors duration-300"
+                                >
+                                    Explore Now
+                                </Button>
+                            </div>
+                        ))}
+                    </div>
+                </main>
+            </div>
+        </div>
+    );
 };
 
 export default Home;
