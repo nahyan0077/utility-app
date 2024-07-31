@@ -30,7 +30,7 @@ export const Home: React.FC = () => {
               },
               {
                 icon: <TiWeatherPartlySunny className="w-16 h-16 mb-4" />,
-                title: "Weather App",
+                title: "Weather Info",
                 description: "Get real-time weather updates for any location.",
               },
               {
