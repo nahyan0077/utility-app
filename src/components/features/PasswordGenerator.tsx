@@ -86,7 +86,7 @@ export const PasswordGenerator: React.FC = () => {
         <div className="  shadow-xl rounded-lg overflow-hidden  border bordre-gray-500">
           <div className=" py-6">
             <h1 className="text-3xl font-bold text-center text-gray-800 dark:text-white">
-              Password Generator
+              Random Password Generator
             </h1>
           </div>
           
@@ -115,12 +115,6 @@ export const PasswordGenerator: React.FC = () => {
                     className="h-full px-3 "
                     aria-label="Copy password">
                     <MdContentCopy size={20} />
-                  </Button>
-                  <Button
-                    onClick={handleGeneratePassword}
-                    className="h-full px-3 "
-                    aria-label="Generate new password">
-                    <MdRefresh size={20} />
                   </Button>
                 </div>
               </div>
