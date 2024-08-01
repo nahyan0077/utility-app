@@ -4,7 +4,7 @@ import { Slider } from "../ui/slider";
 import { Input } from "../ui/input";
 import { Switch } from "../ui/switch";
 import { toast } from "sonner";
-import { MdContentCopy, MdRefresh } from "react-icons/md";
+import { MdContentCopy } from "react-icons/md";
 import { generatePassword } from "@/utils/generatePassword";
 
 export const PasswordGenerator: React.FC = () => {
