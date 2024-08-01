@@ -4,6 +4,7 @@ import { TiWeatherPartlySunny } from "react-icons/ti";
 import { WiDayThunderstorm } from "react-icons/wi";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
+import LoadingPopUp from "../ui/LoadingPopUp";
 
 const weatherApiKey = "ddff1ccb9997d1718531e1f7f9b1cad7";
 
@@ -11,6 +12,7 @@ export const WeatherInfo: React.FC = () => {
   const [weather, setWeather] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     if ("geolocation" in navigator) {
@@ -45,13 +47,16 @@ export const WeatherInfo: React.FC = () => {
   }, []);
 
   const fetchData = async (city: string) => {
+    setLoading(true)
     try {
       const response = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherApiKey}&units=metric`
       );
+      setLoading(false)
       setWeather(response.data);
       setError(null);
     } catch (err: any) {
+      setLoading(false)
       setError("Failed to fetch weather data. Please try again.");
       console.error(
         "Error details:",
@@ -68,6 +73,7 @@ export const WeatherInfo: React.FC = () => {
 
   return (
     <div className="container mx-auto px-4 py-8 min-h-screen flex flex-col items-center">
+      <LoadingPopUp isLoading={loading} />
       <h1 className="text-4xl font-bold text-center mb-8 text-gray-800 dark:text-white">
         Weather Information
       </h1>
