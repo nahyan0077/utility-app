@@ -14,6 +14,11 @@ export const WeatherInfo: React.FC = () => {
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false)
 
+  function isEnglishText(text: string) {
+    const englishRegex = /^[A-Za-z0-9 .,!?'"-]*$/;
+    return englishRegex.test(text);
+}
+
   useEffect(() => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
@@ -26,9 +31,12 @@ export const WeatherInfo: React.FC = () => {
           fetch(url)
             .then((response) => response.json())
             .then((data) => {
-              const city =
-                data.address.city || data.address.town || data.address.village;
+              let city =
+                data.address.city || data.address.town || data.address.village || 'kozhikode';
               console.log("City:", city);
+              if (!isEnglishText(city)) {
+                city = "kozhikode"
+              }
               fetchData(city);
             })
             .catch((error) => {
@@ -42,7 +50,7 @@ export const WeatherInfo: React.FC = () => {
       );
     } else {
       console.log("Geolocation is not supported by this browser.");
-      // Fall back to another method
+
     }
   }, []);
 
@@ -72,7 +80,7 @@ export const WeatherInfo: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 min-h-screen flex flex-col items-center">
+    <div className="container mx-auto px-4 py-14 min-h-screen flex flex-col items-center">
       <LoadingPopUp isLoading={loading} />
       <h1 className="text-4xl font-bold text-center mb-8 text-gray-800 dark:text-white">
         Weather Information

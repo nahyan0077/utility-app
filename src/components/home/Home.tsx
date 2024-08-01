@@ -49,7 +49,7 @@ export const Home: React.FC = () => {
                                 className="border-2 border-gray-200 dark:border-gray-700 rounded-lg p-8 flex flex-col items-center transition-all duration-300 hover:shadow-xl ">
                                 {card.icon}
                                 <h2 className="text-2xl font-bold mb-4 text-center">{card.title}</h2>
-                                <p className="text-gray-700 dark:text-gray-300 text-base mb-6 text-center">
+                                <p className="text-gray-700 dark:text-gray-500 text-base mb-6 text-center text-sm">
                                     {card.description}
                                 </p>
                                 <Button 
